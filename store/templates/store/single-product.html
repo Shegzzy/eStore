@@ -1,0 +1,108 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li class="active">Single Product</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!-- content-wraper start -->
+<div class="content-wraper">
+    <div class="container">
+        <div class="row single-product-area">
+            <div class="col-lg-5 col-md-6">
+                <!-- Product Details Left -->
+                <div class="product-details-left">
+                    <div class="product-details-images slider-navigation-1">
+                        <div class="lg-image">
+                            <a class="popup-img venobox vbox-item" href="{{product.ImageURL}}" data-gall="myGallery">
+                                <img src="{{product.ImageURL}}" alt="product image">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--// Product Details Left -->
+            </div>
+
+            <div class="col-lg-7 col-md-6">
+                <div class="product-details-view-content pt-60">
+                    <div class="product-info">
+                        <h2>{{product.name}}</h2>
+                        <div class="rating-box pt-20">
+                            <ul class="rating rating-with-review-item">
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li><i class="fa fa-star-o"></i></li>
+                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                <li class="no-star"><i class="fa fa-star-o"></i></li>
+                            </ul>
+                        </div>
+                        <div class="price-box pt-20">
+                            <span class="new-price new-price-2">₦{{product.price|floatformat:2}}</span>
+                        </div>
+                        <div class="product-desc">
+                            <p>
+                                <span>100% cotton double printed dress. Black and white striped top and orange
+                                    high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum
+                                    accusamus similique eveniet quia pariatur.
+                                </span>
+                            </p>
+                        </div>
+                        <div class="product-variants">
+                            <div class="produt-variants-size">
+                                <label>Dimension</label>
+                                <select class="nice-select">
+                                    <option value="1" title="S" selected="selected">40x60cm</option>
+                                    <option value="2" title="M">60x90cm</option>
+                                    <option value="3" title="L">80x120cm</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="single-add-to-cart">
+                            <div class="cart-quantity">
+                                <button class="add-to-cart update-cart" data-action="add"
+                                    data-product="{{product.id}}">Add to cart</button>
+                            </div>
+                        </div>
+                        <div class="block-reassurance">
+                            <ul>
+                                <li>
+                                    <div class="reassurance-item">
+                                        <div class="reassurance-icon">
+                                            <i class="fa fa-check-square-o"></i>
+                                        </div>
+                                        <p>Security policy</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="reassurance-item">
+                                        <div class="reassurance-icon">
+                                            <i class="fa fa-truck"></i>
+                                        </div>
+                                        <p>Fast Delivery policy</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="reassurance-item">
+                                        <div class="reassurance-icon">
+                                            <i class="fa fa-exchange"></i>
+                                        </div>
+                                        <p> Return policy</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content-wraper end -->
+{% endblock content %}

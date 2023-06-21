@@ -1,0 +1,70 @@
+{% load static %}
+
+<div class="shop-products-wrapper">
+    <div class="tab-content">
+        <div id="li-new-product-{{ selected_category.slug }}" class="tab-pane fade active show" role="tabpanel">
+            <div class="product-area shop-product-area">
+                <div class="row" id="products-section">
+                    <div class="products">
+                        {%for product in products %}    
+                        <div class="product">
+                            <div class="image">
+                                <a href="{% url 'product_details' product.slug %}" data-product="{{product.id}}">
+                                    <img src="{{product.ImageURL}}" alt="{{product.name}}" />
+                                </a>
+                            </div>
+                            <div class="namePrice">
+                                <a class="product_name" href="{% url 'product_details' product.slug %}">
+                                    {{product.name}}
+                                </a>
+                                <span class="new-price">₦{{product.price|floatformat:0}}</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit..</p>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <div class="bay">
+                                <ul class="add-actions-link">
+                                    <li class="add-cart active">
+                                        <a data-action="add" data-product="{{product.id}}"
+                                            class="add-btn update-cart">
+                                            Add to cart
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+<div class="pagination">
+        <span class="step-links">
+            {% if page_obj_products.has_previous %}
+            <a href="?product_page={{ page_obj_products.previous_page_number }}{% if selected_category %}&category={{selected_category.slug}}{% endif %}"
+                class="previous-page">&laquo;</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ page_obj_products.number }} of {{ page_obj_products.paginator.num_pages }}
+            </span>
+
+            {% if page_obj_products.has_next %}
+            <a href="?product_page={{ page_obj_products.next_page_number }}{% if selected_category %}&category={{selected_category.slug}}{% endif %}"
+                class="next-page">&raquo;</a>
+            {% endif %}
+        </span>
+    </div>
