@@ -53,22 +53,6 @@
                 </div>
             </div>
             <!-- Slider Area End Here -->
-            {% comment %}
-            <!-- Begin Li Banner Area -->
-            <div class="col-lg-4 col-md-4 text-center pt-xs-30">
-                <div class="li-banner">
-                    <a href="#">
-                        <img src="images/banner/1_1.jpg" alt="" />
-                    </a>
-                </div>
-                <div class="li-banner mt-15 mt-sm-30 mt-xs-30">
-                    <a href="#">
-                        <img src="images/banner/1_2.jpg" alt="" />
-                    </a>
-                </div>
-            </div>
-            <!-- Li Banner Area End Here -->
-            {% endcomment %}
         </div>
     </div>
 </div>
@@ -86,9 +70,11 @@
                         </li>
                         {% for category in categories %}
                         <li>
-                            <a href="?category={{category.slug}}" {% if selected_category == category %} class="active category-link" {% else %} class="category-link" {% endif %} data-target="#li-new-product-{{selected_category.slug}}">
+                            <a href="?category={{category.slug}}" {% if selected_category == category %}
+                                class="active category-link" {% else %} class="category-link" {% endif %}
+                                data-target="#li-new-product-{{selected_category.slug}}">
                                 <span>
-                                {{category.name}}
+                                    {{category.name}}
                                 </span>
                             </a>
                         </li>
@@ -97,7 +83,7 @@
                 </div>
             </div>
         </div>
-            
+
         {% include "category_products/products.html" %}
 
     </div>
