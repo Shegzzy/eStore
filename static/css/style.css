@@ -2198,8 +2198,13 @@ nav ul li a:hover::before {
 
 
 /*Sticky*/
+.header-sticky.sticky nav>ul>li>a {
+	color: aliceblue;
+}
+
 .header-sticky.sticky {
 	background: rgba(12, 7, 32, .8);
+	color: aliceblue;
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -6548,6 +6553,31 @@ span.required {
 
 	100% {
 		transform: translate(24px, 0);
+	}
+}
+
+/* Pagination spinner */
+.spinner {
+	border: 4px solid #000;
+	border-top: 4px solid #3498db;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	margin-top: 20px;
+	top: 50%;
+	left: 50%;
+	position: relative;
+	/* animation: spin 1s linear infinite; */
+	animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
 	}
 }
 

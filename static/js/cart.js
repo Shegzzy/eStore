@@ -300,6 +300,8 @@ $(document).on('click', '.pagination .previous-page, .pagination .next-page', fu
 
     var url = $(this).attr('href');
 
+    $('#pagination-spinner').show();
+
     $.ajax({
         url: url,
         type: 'GET',
@@ -311,6 +313,8 @@ $(document).on('click', '.pagination .previous-page, .pagination .next-page', fu
 
             // Scroll to the top of the products section
             $('html, body').animate({ scrollTop: $('#products-section').offset().top }, 'slow');
+
+            $('#pagination-spinner').hide();
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log('Error:', errorThrown);
