@@ -1,122 +1,338 @@
 [
 {
     "model": "store.product",
-    "pk": 1,
+    "pk": 12,
     "fields": {
-        "name": "Iced Cake",
-        "category": 4,
-        "price": "3000.00",
+        "name": "Hermes",
+        "category": 6,
+        "price": "20000.00",
         "description": "",
         "digital": false,
-        "image": "Cake1_eryq3lg.JPG",
-        "created_at": "2023-05-07T17:14:12.309Z",
-        "updated_at": "2023-05-07T17:14:12.309Z",
-        "slug": null
+        "image": "hermes_9wlY06h.JPG",
+        "created_at": "2023-06-22T10:31:08.021Z",
+        "updated_at": "2023-06-22T10:31:08.021Z",
+        "colors": "brown",
+        "slug": "hermes"
     }
 },
 {
     "model": "store.product",
-    "pk": 2,
+    "pk": 13,
     "fields": {
-        "name": "Cookie",
-        "category": 4,
-        "price": "1500.00",
+        "name": "Burberry",
+        "category": 6,
+        "price": "23000.00",
         "description": "",
         "digital": false,
-        "image": "cake3.JPG",
-        "created_at": "2023-05-07T17:14:38.480Z",
-        "updated_at": "2023-05-07T17:14:38.480Z",
-        "slug": null
+        "image": "burberry.JPG",
+        "created_at": "2023-06-22T10:31:53.968Z",
+        "updated_at": "2023-06-22T10:31:53.968Z",
+        "colors": "brown",
+        "slug": "burberry"
     }
 },
 {
     "model": "store.product",
-    "pk": 3,
+    "pk": 14,
     "fields": {
-        "name": "Cup Cakes",
-        "category": 4,
-        "price": "1000.00",
+        "name": "Black Palm",
+        "category": 6,
+        "price": "20000.00",
         "description": "",
         "digital": false,
-        "image": "chocolatecake.JPG",
-        "created_at": "2023-05-07T17:15:24.272Z",
-        "updated_at": "2023-05-07T17:15:24.272Z",
-        "slug": null
+        "image": "black-palm.JPG",
+        "created_at": "2023-06-22T10:32:40.035Z",
+        "updated_at": "2023-06-22T10:32:40.035Z",
+        "colors": "Black",
+        "slug": "palm"
     }
 },
 {
     "model": "store.product",
-    "pk": 4,
+    "pk": 15,
     "fields": {
-        "name": "Dohgnught",
-        "category": 4,
-        "price": "1300.00",
+        "name": "Berluti",
+        "category": 6,
+        "price": "25000.00",
         "description": "",
         "digital": false,
-        "image": "donought.JPG",
-        "created_at": "2023-05-07T17:17:41.527Z",
-        "updated_at": "2023-05-07T17:17:41.527Z",
-        "slug": "doghnught"
+        "image": "berluti.JPG",
+        "created_at": "2023-06-22T10:33:18.434Z",
+        "updated_at": "2023-06-22T10:33:18.434Z",
+        "colors": "Black",
+        "slug": "berluti"
     }
 },
 {
     "model": "store.product",
-    "pk": 5,
+    "pk": 16,
     "fields": {
-        "name": "Bisccuit",
-        "category": 4,
-        "price": "500.00",
+        "name": "Black Shoe",
+        "category": 6,
+        "price": "22000.00",
         "description": "",
         "digital": false,
-        "image": "pie2.JPG",
-        "created_at": "2023-05-07T17:18:25.575Z",
-        "updated_at": "2023-05-07T17:18:25.575Z",
-        "slug": "pie"
+        "image": "black-shoe.JPG",
+        "created_at": "2023-06-22T10:34:12.113Z",
+        "updated_at": "2023-06-22T10:34:12.113Z",
+        "colors": "Black",
+        "slug": "black-shoe"
     }
 },
 {
     "model": "store.product",
-    "pk": 6,
+    "pk": 17,
     "fields": {
-        "name": "Television",
-        "category": 3,
+        "name": "Brown Shoe",
+        "category": 6,
+        "price": "18000.00",
+        "description": "",
+        "digital": false,
+        "image": "brown.JPG",
+        "created_at": "2023-06-22T10:34:50.366Z",
+        "updated_at": "2023-06-22T10:34:50.366Z",
+        "colors": "brown",
+        "slug": "brown-shoe"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 18,
+    "fields": {
+        "name": "Half Shoe",
+        "category": 6,
+        "price": "23000.00",
+        "description": "",
+        "digital": false,
+        "image": "half-black.JPG",
+        "created_at": "2023-06-22T10:35:37.285Z",
+        "updated_at": "2023-06-22T10:35:37.285Z",
+        "colors": "Black",
+        "slug": "half-shoe"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 19,
+    "fields": {
+        "name": "Signature",
+        "category": 6,
+        "price": "13000.00",
+        "description": "",
+        "digital": false,
+        "image": "sign.JPG",
+        "created_at": "2023-06-22T10:36:33.700Z",
+        "updated_at": "2023-06-22T10:36:33.700Z",
+        "colors": "brown",
+        "slug": "sign"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 20,
+    "fields": {
+        "name": "Naked Wolf",
+        "category": 6,
         "price": "30000.00",
         "description": "",
         "digital": false,
-        "image": "1.jpg",
-        "created_at": "2023-05-07T17:19:14.318Z",
-        "updated_at": "2023-05-07T17:19:14.318Z",
-        "slug": "tv"
+        "image": "naked.JPG",
+        "created_at": "2023-06-22T10:37:23.427Z",
+        "updated_at": "2023-06-22T10:37:23.427Z",
+        "colors": "Black",
+        "slug": "naked-wolf"
     }
 },
 {
     "model": "store.product",
-    "pk": 7,
+    "pk": 21,
     "fields": {
-        "name": "Camera",
-        "category": 3,
-        "price": "34000.00",
+        "name": "Naked Wolf",
+        "category": 6,
+        "price": "27000.00",
         "description": "",
         "digital": false,
-        "image": "2.jpg",
-        "created_at": "2023-05-07T17:19:41.793Z",
-        "updated_at": "2023-05-07T17:19:41.793Z",
-        "slug": "camera"
+        "image": "",
+        "created_at": "2023-06-22T10:38:13.056Z",
+        "updated_at": "2023-06-22T10:38:13.056Z",
+        "colors": "Black",
+        "slug": "naked-wolf2"
     }
 },
 {
     "model": "store.product",
-    "pk": 8,
+    "pk": 22,
     "fields": {
-        "name": "Game Pad",
-        "category": 3,
-        "price": "4500.00",
+        "name": "JK",
+        "category": 6,
+        "price": "18000.00",
         "description": "",
         "digital": false,
-        "image": "3.jpg",
-        "created_at": "2023-05-07T17:21:20.054Z",
-        "updated_at": "2023-05-07T17:21:20.054Z",
-        "slug": "pad"
+        "image": "jk.JPG",
+        "created_at": "2023-06-22T10:38:52.513Z",
+        "updated_at": "2023-06-22T10:38:52.513Z",
+        "colors": "Black",
+        "slug": "jk"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 23,
+    "fields": {
+        "name": "Half Black Shoe",
+        "category": 6,
+        "price": "21000.00",
+        "description": "",
+        "digital": false,
+        "image": "half-black_010BcAD.JPG",
+        "created_at": "2023-06-22T10:39:42.701Z",
+        "updated_at": "2023-06-22T10:39:42.701Z",
+        "colors": "Black",
+        "slug": "black-half"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 24,
+    "fields": {
+        "name": "iPhone 12",
+        "category": 2,
+        "price": "32000.00",
+        "description": "",
+        "digital": false,
+        "image": "PHOTO-2023-06-10-17-58-15.jpg",
+        "created_at": "2023-06-22T10:53:55.917Z",
+        "updated_at": "2023-06-22T10:53:55.917Z",
+        "colors": "Black",
+        "slug": "iphone12"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 25,
+    "fields": {
+        "name": "iPhone 12pro",
+        "category": 2,
+        "price": "400000.00",
+        "description": "",
+        "digital": false,
+        "image": "12pro.jpg",
+        "created_at": "2023-06-22T10:54:45.369Z",
+        "updated_at": "2023-06-22T10:54:45.369Z",
+        "colors": "White",
+        "slug": "12pro"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 26,
+    "fields": {
+        "name": "iPhone 11",
+        "category": 2,
+        "price": "200000.00",
+        "description": "",
+        "digital": false,
+        "image": "11.jpg",
+        "created_at": "2023-06-22T10:55:40.224Z",
+        "updated_at": "2023-06-22T10:55:40.224Z",
+        "colors": "Black",
+        "slug": "iphone11"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 27,
+    "fields": {
+        "name": "iPhone 11pro",
+        "category": 2,
+        "price": "230000.00",
+        "description": "",
+        "digital": false,
+        "image": "",
+        "created_at": "2023-06-22T10:56:40.603Z",
+        "updated_at": "2023-06-22T10:56:40.603Z",
+        "colors": "Blue",
+        "slug": "iphone11pro"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 28,
+    "fields": {
+        "name": "iPhone Xr",
+        "category": 2,
+        "price": "180000.00",
+        "description": "",
+        "digital": false,
+        "image": "Xr.jpg",
+        "created_at": "2023-06-22T10:57:18.700Z",
+        "updated_at": "2023-06-22T10:57:18.700Z",
+        "colors": "Black",
+        "slug": "xr"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 29,
+    "fields": {
+        "name": "iPhone X",
+        "category": 2,
+        "price": "150000.00",
+        "description": "",
+        "digital": false,
+        "image": "x.jpg",
+        "created_at": "2023-06-22T10:57:57.354Z",
+        "updated_at": "2023-06-22T10:57:57.354Z",
+        "colors": "Blue",
+        "slug": "iphone-x"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 30,
+    "fields": {
+        "name": "iPhone 13",
+        "category": 2,
+        "price": "430000.00",
+        "description": "",
+        "digital": false,
+        "image": "13.jpg",
+        "created_at": "2023-06-22T10:58:43.729Z",
+        "updated_at": "2023-06-22T10:58:43.729Z",
+        "colors": "Blue",
+        "slug": "iphone13"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 31,
+    "fields": {
+        "name": "iPhone 13pro",
+        "category": 2,
+        "price": "450000.00",
+        "description": "",
+        "digital": false,
+        "image": "13pro.jpg",
+        "created_at": "2023-06-22T10:59:22.454Z",
+        "updated_at": "2023-06-22T10:59:22.454Z",
+        "colors": "White",
+        "slug": "iphone13pro"
+    }
+},
+{
+    "model": "store.product",
+    "pk": 32,
+    "fields": {
+        "name": "iPhone 13pro Max",
+        "category": 2,
+        "price": "500000.00",
+        "description": "",
+        "digital": false,
+        "image": "13pro-max.jpg",
+        "created_at": "2023-06-22T11:00:16.003Z",
+        "updated_at": "2023-06-22T11:00:16.003Z",
+        "colors": "Blue",
+        "slug": "iphone13pro-max"
     }
 }
 ]

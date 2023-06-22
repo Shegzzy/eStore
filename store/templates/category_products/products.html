@@ -6,7 +6,7 @@
             <div class="product-area shop-product-area">
                 <div class="row" id="products-section">
                     <div class="products">
-                        {%for product in products %}    
+                        {%for product in products %}
                         <div class="product">
                             <div class="image">
                                 <a href="{% url 'product_details' product.slug %}" data-product="{{product.id}}">
@@ -30,8 +30,7 @@
                             <div class="bay">
                                 <ul class="add-actions-link">
                                     <li class="add-cart active">
-                                        <a data-action="add" data-product="{{product.id}}"
-                                            class="add-btn update-cart">
+                                        <a data-action="add" data-product="{{product.id}}" class="add-btn update-cart">
                                             Add to cart
                                         </a>
                                     </li>
@@ -42,16 +41,12 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
-        
+
     </div>
-</div>
 
-
-
-
-<div class="pagination">
+    <div class="pagination">
         <span class="step-links">
             {% if page_obj_products.has_previous %}
             <a href="?product_page={{ page_obj_products.previous_page_number }}{% if selected_category %}&category={{selected_category.slug}}{% endif %}"
@@ -68,3 +63,4 @@
             {% endif %}
         </span>
     </div>
+</div>
