@@ -2202,9 +2202,12 @@ nav ul li a:hover::before {
 	color: aliceblue;
 }
 
+.header-sticky.sticky .fa-user {
+	color: aliceblue;
+}
+
 .header-sticky.sticky {
 	background: rgba(12, 7, 32, .8);
-	color: aliceblue;
 	left: 0;
 	position: fixed;
 	right: 0;
