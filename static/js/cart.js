@@ -5,13 +5,17 @@ for (var i = 0; i < updateBtns.length; i++) {
         event.preventDefault();
         var productId = this.dataset.product;
         var action = this.dataset.action;
-        console.log('productId:', productId, 'action:', action);
+        var colorSelect = document.getElementById('colorSelect');
+        var sizeSelect = document.getElementById('sizeSelect');
+        var colorId = colorSelect ? colorSelect.value : null;
+        var sizeId = sizeSelect ? sizeSelect.value : null;
+        console.log('productId:', productId, 'action:', action, 'colorId:', colorId, 'sizeId:', sizeId);
 
         console.log('USER:', user);
         if (user == 'AnonymousUser') {
-            addCookieItem(productId, action);
+            addCookieItem(productId, action, colorId, sizeId);
         } else {
-            updateUserOrder(productId, action);
+            updateUserOrder(productId, action, colorId, sizeId);
         }
     });
 }
@@ -24,27 +28,36 @@ function addUpdateCartListeners() {
             event.preventDefault();
             var productId = this.dataset.product;
             var action = this.dataset.action;
-            console.log('productId:', productId, 'action:', action);
+            var colorSelect = document.getElementById('colorSelect');
+            var sizeSelect = document.getElementById('sizeSelect');
+            var colorId = colorSelect ? colorSelect.value : null;
+            var sizeId = sizeSelect ? sizeSelect.value : null;
+            console.log('productId:', productId, 'action:', action, 'colorId:', colorId, 'sizeId:', sizeId);
 
             console.log('USER:', user);
             if (user == 'AnonymousUser') {
-                addCookieItem(productId, action);
+                addCookieItem(productId, action, colorId, sizeId);
             } else {
-                updateUserOrder(productId, action);
+                updateUserOrder(productId, action, colorId, sizeId);
             }
 
         });
     }
 }
 
-function addCookieItem(productId, action) {
+function addCookieItem(productId, action, colorId, sizeId) {
     console.log('Guest user...');
+    console.log(colorId);
 
     if (action === 'add') {
         if (cart[productId] === undefined) {
-            cart[productId] = { 'quantity': 1 };
+            cart[productId] = { 'quantity': 1, 'colorId': colorId, 'sizeId': sizeId };
+
         } else {
             cart[productId]['quantity'] += 1;
+            cart[productId]['colorId'] = colorId;
+            cart[productId]['sizeId'] = sizeId;
+
         }
         showPopupMessage('Item added to cart');
     }
@@ -130,9 +143,10 @@ function addCookieItem(productId, action) {
             }
         })
         .catch(error => console.error('Error:', error));
+
 }
 
-function updateUserOrder(productId, action) {
+function updateUserOrder(productId, action, colorId, sizeId) {
     console.log('user is logged in as:', user);
     var url = '/update_item/';
 
@@ -142,7 +156,12 @@ function updateUserOrder(productId, action) {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({ 'productId': productId, 'action': action }),
+        body: JSON.stringify({
+            'productId': productId,
+            'action': action,
+            'colorId': colorId,
+            'sizeId': sizeId,
+        }),
     })
 
         .then((response) => {

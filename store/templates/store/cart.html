@@ -27,6 +27,8 @@
                                     <th class="li-product-thumbnail">images</th>
                                     <th class="cart-product-name">Product</th>
                                     <th class="li-product-price">Unit Price</th>
+                                    <th class="li-product-price">Color</th>
+                                    <th class="li-product-price">Size</th>
                                     <th class="li-product-quantity">Quantity</th>
                                     <th class="li-product-subtotal">Total</th>
                                 </tr>
@@ -39,11 +41,17 @@
                                         onclick="deleteCartItem('{{ item.product.id }}')">
                                         <i class="fa fa-times"></i>
                                     </td>
-                                    <td class="li-product-thumbnail"><img src="{{item.product.ImageURL}}"
-                                            alt="Li's Product Image"></td>
+                                    <td class="li-product-thumbnail">
+                                        <img src="{{item.product.ImageURL}}" alt="Denpoly Product Image">
+                                    </td>
                                     <td class="li-product-name">{{item.product.name}}</td>
-                                    <td class="li-product-price"><span
-                                            class="amount">₦{{item.product.price|floatformat:2}}</span></td>
+                                    <td class="li-product-price">
+                                        <span class="amount">
+                                            ₦{{item.product.price|floatformat:2}}
+                                        </span>
+                                    </td>
+                                    <td class="li-product-name">{{item.color}}</td>
+                                    <td class="li-product-name">{{item.size}}</td>
                                     <td class="quantity">
                                         <label>Quantity</label>
                                         <div class="cart-plus-minus">

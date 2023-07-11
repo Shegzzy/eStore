@@ -3,8 +3,11 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+admin.site.index_title = "DenPolyLimited Admin"
+admin.site.site_title = "DenPolyLimited Admin"
+
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("denpoly.admin/", admin.site.urls),
     path("", include("store.urls")),
 ]
 

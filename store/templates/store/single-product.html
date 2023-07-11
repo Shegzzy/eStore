@@ -54,16 +54,41 @@
                                 </span>
                             </p>
                         </div>
-                        <!-- <div class="product-variants">
+                        <div class="product-variants row">
                             <div class="produt-variants-size">
-                                <label>Dimension</label>
-                                <select class="nice-select">
-                                    <option value="1" title="S" selected="selected">40x60cm</option>
-                                    <option value="2" title="M">60x90cm</option>
-                                    <option value="3" title="L">80x120cm</option>
-                                </select>
+                                {% if product.colors.exists and product.sizes.exists %}
+                                    <label>Colors</label>
+                                    <select class="nice-select" id="colorSelect">
+                                        {% for color in product.colors.all %}
+                                            <option value="{{ color }}">{{ color }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <label>Sizes</label>
+                                    <select class="nice-select" id="sizeSelect">
+                                        {% for size in product.sizes.all %}
+                                            <option value="{{ size }}">{{ size }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% elif product.sizes.exists %}
+                                    <label>Sizes</label>
+                                    <select class="nice-select" id="sizeSelect">
+                                        {% for size in product.sizes.all %}
+                                            <option value="{{ size }}">{{ size }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% elif product.colors.exists %}
+                                    <label>Colors</label>
+                                    <select class="nice-select" id="colorSelect">
+                                        {% for color in product.colors.all %}
+                                            <option value="{{ color }}">{{ color }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endif %}
                             </div>
-                        </div> -->
+                        </div>
                         <div class="single-add-to-cart">
                             <div class="cart-quantity">
                                 <button class="add-to-cart update-cart" data-action="add"

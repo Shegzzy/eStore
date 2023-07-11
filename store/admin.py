@@ -2,8 +2,30 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from .models import *
+from django import forms
+from accounts.models import CustomUser
 
 # Register your models here.
+
+
+# class ProductForm(forms.ModelForm):
+#     sizes = forms.MultipleChoiceField(
+#         choices=Product.SIZE_CHOICES, widget=forms.CheckboxSelectMultiple
+#     )
+#     colors = forms.MultipleChoiceField(
+#         choices=Product.COLOR_CHOICES, widget=forms.CheckboxSelectMultiple
+#     )
+
+#     class Meta:
+#         model = Product
+#         fields = "__all__"
+
+# def __init__(self, *args, **kwargs):
+#     super().__init__(*args, **kwargs)
+#     instance = getattr(self, "instance", None)
+#     if instance and instance.pk:
+#         self.initial["sizes"] = instance.sizes.split(",")
+#         self.initial["colors"] = instance.colors.split(",")
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -52,6 +74,18 @@ class ProductAdmin(admin.ModelAdmin):
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
+    readonly_fields = (
+        "product",
+        "order",
+        "quantity",
+        "color",
+        "size",
+        "date_ordered",
+        "get_total",
+    )
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -62,6 +96,10 @@ class OrderAdmin(admin.ModelAdmin):
         "get_cart_items",
         "get_cart_total",
         "complete",
+        "address",
+        "city",
+        "state",
+        "phone",
     )
     list_filter = ("customer", "date_ordered", "complete")
     search_fields = ("id", "user__username", "user__email")
@@ -69,9 +107,24 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
 
 
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = (
+        "product",
+        "order",
+        "quantity",
+        "size",
+        "color",
+        "date_ordered",
+        "get_total",
+    )
+
+
+admin.site.register(CustomUser)
 admin.site.register(Customer)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(OrderItem)
+admin.site.register(OrderItem, OrderItemAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ShippingAddres)
 admin.site.register(Categorie)
+admin.site.register(Size)
+admin.site.register(Color)

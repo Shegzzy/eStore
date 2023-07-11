@@ -533,74 +533,6 @@ textarea:focus {
 	width: 100%;
 }
 
-/* .bg-2 {
-	background-image: url(images/slider/2.jpg);
-}
-
-.bg-3 {
-	background-image: url(images/slider/3.jpg);
-} */
-
-/*Home Two | Slider Background Image*/
-.bg-4,
-.bg-5,
-.bg-6 {
-	background-image: url(images/slider/4.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	min-height: 475px;
-	width: 100%;
-}
-
-.bg-5 {
-	background-image: url(images/slider/5.jpg);
-}
-
-.bg-6 {
-	background-image: url(images/slider/6.jpg);
-}
-
-/*Home Three | Slider Background Image*/
-.bg-7,
-.bg-8,
-.bg-9 {
-	background-image: url(images/slider/7.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	min-height: 425px;
-	width: 100%;
-}
-
-.bg-8 {
-	background-image: url(images/slider/8.jpg);
-}
-
-.bg-9 {
-	background-image: url(images/slider/9.jpg);
-}
-
-/*Home Four | Slider Background Image*/
-.bg-10,
-.bg-11,
-.bg-12 {
-	background-image: url(images/slider/10.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	min-height: 770px;
-	width: 100%;
-}
-
-.bg-11 {
-	background-image: url(images/slider/11.jpg);
-}
-
-.bg-12 {
-	background-image: url(images/slider/12.jpg);
-}
-
 /*----------------------------------------*/
 /*  li's Background Variation Set 
 /*----------------------------------------*/
@@ -2198,6 +2130,14 @@ nav ul li a:hover::before {
 
 
 /*Sticky*/
+.header-sticky.sticky nav>ul>li>a {
+	color: aliceblue;
+}
+
+.header-sticky.sticky .fa-user {
+	color: aliceblue;
+}
+
 .header-sticky.sticky {
 	background: rgba(12, 7, 32, .8);
 	left: 0;
@@ -2349,16 +2289,6 @@ nav ul li a:hover::before {
 /*----------------------------------------*/
 /*  2.3 Li's Static Top
 /*----------------------------------------*/
-.static-top-content {
-	text-align: center;
-	font-weight: 400;
-	font-size: 16px;
-	padding: 20px 0;
-	color: #fff;
-	background-image: url(images/static-top/1.jpg);
-	background-size: cover;
-	margin-top: 20px;
-}
 
 .static-top .static-top-content span {
 	color: #fed700;
@@ -3140,12 +3070,6 @@ nav ul li a:hover::before {
 /*----------------------------------------*/
 /*  2.7 Li's Static Home Banner
 /*----------------------------------------*/
-.li-static-home-image {
-	background-image: url(images/bg-banner/1.jpg);
-	background-size: cover;
-	height: 400px;
-	background-repeat: no-repeat;
-}
 
 .li-static-home-content {
 	padding-left: 75px;
@@ -6548,6 +6472,31 @@ span.required {
 
 	100% {
 		transform: translate(24px, 0);
+	}
+}
+
+/* Pagination spinner */
+.spinner {
+	border: 4px solid #000;
+	border-top: 4px solid #3498db;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	margin-top: 20px;
+	top: 50%;
+	left: 50%;
+	position: relative;
+	/* animation: spin 1s linear infinite; */
+	animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
 	}
 }
 

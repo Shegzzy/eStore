@@ -8,6 +8,8 @@ def cookieCart(request):
     except:
         cart = {}
 
+    # print("Cart Items:", cart)
+
     items = []
     order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
     cartItems = order["get_cart_items"]
@@ -31,6 +33,8 @@ def cookieCart(request):
                     "ImageURL": product.ImageURL,
                 },
                 "quantity": cart[i]["quantity"],
+                "color": cart[i]["colorId"],
+                "size": cart[i]["sizeId"],
                 "get_total": total,
             }
             items.append(item)
@@ -58,9 +62,9 @@ def cartData(request):
 
 
 def guestOder(request, data):
-    print("User not logged in")
+    # print("User not logged in")
 
-    print("COOKIES:", request.COOKIES)
+    # print("COOKIES:", request.COOKIES)
     first_name = data["form"]["first_name"]
     last_name = data["form"]["last_name"]
     email = data["form"]["email"]
@@ -84,7 +88,11 @@ def guestOder(request, data):
         product = Product.objects.get(id=item["product"]["id"])
 
         orderItem = OrderItem.objects.create(
-            product=product, order=order, quantity=item["quantity"]
+            product=product,
+            order=order,
+            quantity=item["quantity"],
+            color=item["color"],
+            size=item["size"],
         )
 
     return customer, order

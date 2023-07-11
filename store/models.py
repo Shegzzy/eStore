@@ -1,12 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 
 # Create your models here.
 
 
 class Customer(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        get_user_model(), null=True, blank=True, on_delete=models.CASCADE
+    )
     first_name = models.CharField(max_length=200, null=True)
     last_name = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=200, null=True)
@@ -33,6 +35,20 @@ class Categorie(models.Model):
         return self.name
 
 
+class Color(models.Model):
+    colors = models.CharField(max_length=25, null=True, blank=True)
+
+    def __str__(self):
+        return self.colors
+
+
+class Size(models.Model):
+    sizes = models.CharField(max_length=25, null=True, blank=True)
+
+    def __str__(self):
+        return self.sizes
+
+
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     category = models.ForeignKey(Categorie, on_delete=models.PROTECT, null=True)
@@ -42,7 +58,8 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
-    colors = models.CharField(max_length=200, null=True)
+    colors = models.ManyToManyField(Color, blank=True)
+    sizes = models.ManyToManyField(Size, blank=True)
     slug = models.SlugField(unique=True, null=True)
 
     class Meta:
@@ -72,6 +89,10 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False, blank=False, null=True)
     transaction_id = models.CharField(max_length=200, null=True)
+    address = models.CharField(max_length=150, blank=True, null=True)
+    city = models.CharField(max_length=150, blank=True, null=True)
+    state = models.CharField(max_length=150, blank=True, null=True)
+    phone = models.CharField(max_length=150, blank=True, null=True)
 
     class Meta:
         ordering = ("-date_ordered",)
@@ -105,10 +126,12 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=0, blank=True, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    size = models.CharField(max_length=20, null=True, blank=True)
+    color = models.CharField(max_length=20, null=True, blank=True)
+    date_ordered = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ("-date_added",)
+        ordering = ("-date_ordered",)
 
     def __str__(self):
         return str(self.product)

@@ -14,6 +14,9 @@ from .models import *
 from .util import cookieCart, cartData, guestOder
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 # Create your views here.
@@ -91,14 +94,21 @@ def register(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
 
-        # Create user
-        user = User.objects.create_user(
-            username=username,
+        # Check if user with email already exists
+        user, created = User.objects.get_or_create(
             email=email,
-            password=password,
-            first_name=first_name,
-            last_name=last_name,
+            defaults={
+                "username": username,
+                "first_name": first_name,
+                "last_name": last_name,
+            },
         )
+
+        if not created:
+            messages.error(
+                request, "Email already exists. Please choose a different email."
+            )
+            return redirect("register")
 
         # Create customer
         customer = Customer.objects.create(
@@ -110,8 +120,12 @@ def register(request):
         )
         customer.save()
 
+        # Set the password for the user
+        user.set_password(password)
+        user.save()
+
         # Authenticate user and log them in
-        user = authenticate(request, username=username, password=password)
+        # user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, "You have successfully registered and logged in!")
@@ -160,16 +174,10 @@ def user_login(request):
         return redirect("index")
 
     if request.method == "POST":
-        username = request.POST.get("username")
+        email = request.POST.get("email")
         password = request.POST.get("password")
 
-        try:
-            user = User.objects.get(username=username)
-        except ObjectDoesNotExist:
-            messages.error(request, "User does not exist")
-            return render(request, "registration/login-register.html", context)
-
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=email, password=password)
 
         if user is not None:
             login(request, user)
@@ -289,9 +297,13 @@ def updateItem(request):
     data = json.loads(request.body)
     datas = cartData(request)
     productId = data["productId"]
+    colorId = data["colorId"]
+    sizeId = data["sizeId"]
     action = data["action"]
     items = datas["items"]
 
+    print(sizeId)
+    print(colorId)
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -304,6 +316,8 @@ def updateItem(request):
 
     if action == "add":
         orderItem.quantity = orderItem.quantity + 1
+        orderItem.color = colorId
+        orderItem.size = sizeId
         messages.success(request, "Item added to cart")
     elif action == "remove":
         orderItem.quantity = orderItem.quantity - 1
@@ -355,8 +369,7 @@ def verifyPayment(reference):
         payment_data = response.json()["data"]
         # Extract necessary payment details
         status = payment_data["status"]
-        amount = payment_data["amount"] / 100  # Convert amount to the correct currency
-        # You can perform additional actions here based on the payment status and amount
+        amount = payment_data["amount"] / 100
         return status, amount
     else:
         # Payment verification failed
@@ -386,13 +399,13 @@ def processOrder(request):
             "amount": total,
             "callback_url": request.build_absolute_uri(reverse("paystack_verify")),
         }
-        print(payload)
+        # print(payload)
         response = requests.post(
             "https://api.paystack.co/transaction/initialize",
             headers=headers,
             json=payload,
         )
-        print(response)
+        # print(response)
 
         if response.status_code == 200:
             # Redirect customer to Paystack payment page
@@ -402,6 +415,10 @@ def processOrder(request):
                 # Payment verification successful
                 order.transaction_id = transaction_id
                 order.complete = True
+                order.address = data["shipping"]["address"]
+                order.city = data["shipping"]["city"]
+                order.state = data["shipping"]["state"]
+                order.phone = data["shipping"]["phone"]
                 order.save()
 
                 if order.shipping == True:
