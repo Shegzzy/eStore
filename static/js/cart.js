@@ -366,3 +366,22 @@ function hidePopupMessage() {
     }
 }
 
+function formatPrice(priceElement, currencyCode, locale) {
+    const rawPrice = parseFloat(priceElement.getAttribute("data-price"));
+    const formattedPrice = new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: currencyCode,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(rawPrice);
+
+    priceElement.textContent = formattedPrice;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const priceElements = document.querySelectorAll(".new-price");
+
+    priceElements.forEach(element => {
+        formatPrice(element, "NGN", "en-NG");
+    });
+});

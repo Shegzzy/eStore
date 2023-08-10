@@ -1,4 +1,6 @@
-{% load static %} {% if items %}
+{% load static %}
+{% load humanize %}
+{% if items %}
 <ul class="minicart-product-list">
     {% for item in items %}
     <li id="item-container-{{item.product.id}}">
@@ -9,7 +11,7 @@
             <h6>
                 <a href="{% url 'product_details' item.product.slug %}">{{item.product.name}}</a>
             </h6>
-            <span> ₦{{item.product.price}} </span>
+            <span> ₦{{item.product.price|intcomma}} </span>
             x
             <span id="miniCart_item-quantity-{{item.product.id}}"> {{item.quantity}} </span>
         </div>
@@ -22,7 +24,7 @@
 </ul>
 <p class="minicart-total">
     TOTAL:
-    <span id="mini-cart-total">₦{{order.get_cart_total|floatformat:2}}</span>
+    <span id="mini-cart-total">₦{{order.get_cart_total|floatformat:2|intcomma}}</span>
 </p>
 <div class="minicart-button">
     <a href="{% url 'cart' %}" class="li-button li-button-fullwidth li-button-dark">
