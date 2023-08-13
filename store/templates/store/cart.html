@@ -1,5 +1,6 @@
 {% extends 'store/main.html' %}
 {% load static %}
+{% load humanize %}
 {% block content %}
 
 <div class="breadcrumb-area">
@@ -47,7 +48,7 @@
                                     <td class="li-product-name">{{item.product.name}}</td>
                                     <td class="li-product-price">
                                         <span class="amount">
-                                            ₦{{item.product.price|floatformat:2}}
+                                            ₦{{item.product.price|floatformat:2|intcomma}}
                                         </span>
                                     </td>
                                     <td class="li-product-name">{{item.color}}</td>
@@ -69,7 +70,7 @@
                                     </td>
                                     <td class="product-subtotal">
                                         <span id="item-amount-{{item.product.id}}" class="amount">
-                                            ₦{{item.get_total}}
+                                            ₦{{item.get_total|intcomma}}
                                         </span>
                                     </td>
                                 </tr>
@@ -83,7 +84,7 @@
                                 <h2>Cart totals</h2>
                                 <ul>
                                     <li>Items <span id="carts-count">{{order.get_cart_items}}</span></li>
-                                    <li>Total <span id="carts-total">₦{{order.get_cart_total}}</span></li>
+                                    <li>Total <span id="carts-total">₦{{order.get_cart_total|intcomma}}</span></li>
                                 </ul>
                                 {% if order.get_cart_items <= 0 %} <p>...</p>
                                     {% else %}

@@ -1,4 +1,6 @@
-{% extends 'store/main.html' %} {% load static %} {% block content %}
+{% extends 'store/main.html' %} {% load static %}
+{% load humanize %}
+{% block content %}
 
 <!-- Begin Li's Breadcrumb Area -->
 <div class="breadcrumb-area">
@@ -107,7 +109,7 @@
                                             class="small-image">
                                     </td>
                                     <td class="cart-product-total"><span
-                                            class="amount">₦{{item.get_total|floatformat:2}}</span></td>
+                                            class="amount">₦{{item.get_total|floatformat:2|intcomma}}</span></td>
 
                                 </tr>
                                 {% endfor %}
@@ -117,7 +119,7 @@
                                     <th>Order Total</th>
                                     <td><strong><span class="amount"></span></strong></td>
                                     <td><strong><span
-                                                class="amount">₦{{order.get_cart_total|floatformat:2}}</span></strong>
+                                                class="amount">₦{{order.get_cart_total|floatformat:2|intcomma}}</span></strong>
                                     </td>
                                 </tr>
                             </tfoot>
