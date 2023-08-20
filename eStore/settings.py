@@ -82,17 +82,19 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "railway",
-#         "USER": config("DB_USER"),
-#         "PASSWORD": config("DB_PASSWORD"),
-#         "HOST": config("DB_HOST"),
-#         "PORT": config("DB_PORT"),
-#         "URL": config("DB_URL"),
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "verceldb",
+        "POSTGRES_PRISMA_URL": "postgres://default:o16LpOCERwkr@ep-empty-limit-800726-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?pgbouncer=true&connect_timeout=15",
+        "POSTGRES_URL_NON_POOLING": "postgres://default:o16LpOCERwkr@ep-empty-limit-800726.us-east-1.postgres.vercel-storage.com:5432/verceldb",
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        # "PORT": config("DB_PORT"),
+        "URL": config("DB_URL"),
+    }
+}
 
 
 # Password validation
