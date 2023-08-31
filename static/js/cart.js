@@ -341,6 +341,12 @@ $(document).on('click', '.pagination .previous-page, .pagination .next-page', fu
     });
 });
 
+$(document).on('click', '.links', function (e) {
+
+    $('html, body').animate({ scrollTop: $('#products-area').offset().top }, 'slow');
+
+});
+
 
 
 function showPopupMessage(message) {
